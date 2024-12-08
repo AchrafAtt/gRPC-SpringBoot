@@ -158,6 +158,38 @@ public final class CompteServiceGrpc {
      return getSaveCompteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<ma.projet.grpc.stubs.FindComptesByTypeRequest,
+      ma.projet.grpc.stubs.FindComptesByTypeResponse> getFindComptesByTypeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "FindComptesByType",
+      requestType = ma.projet.grpc.stubs.FindComptesByTypeRequest.class,
+      responseType = ma.projet.grpc.stubs.FindComptesByTypeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ma.projet.grpc.stubs.FindComptesByTypeRequest,
+      ma.projet.grpc.stubs.FindComptesByTypeResponse> getFindComptesByTypeMethod() {
+    io.grpc.MethodDescriptor<ma.projet.grpc.stubs.FindComptesByTypeRequest, ma.projet.grpc.stubs.FindComptesByTypeResponse> getFindComptesByTypeMethod;
+    if ((getFindComptesByTypeMethod = CompteServiceGrpc.getFindComptesByTypeMethod) == null) {
+      synchronized (CompteServiceGrpc.class) {
+        if ((getFindComptesByTypeMethod = CompteServiceGrpc.getFindComptesByTypeMethod) == null) {
+          CompteServiceGrpc.getFindComptesByTypeMethod = getFindComptesByTypeMethod = 
+              io.grpc.MethodDescriptor.<ma.projet.grpc.stubs.FindComptesByTypeRequest, ma.projet.grpc.stubs.FindComptesByTypeResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "CompteService", "FindComptesByType"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ma.projet.grpc.stubs.FindComptesByTypeRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ma.projet.grpc.stubs.FindComptesByTypeResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new CompteServiceMethodDescriptorSupplier("FindComptesByType"))
+                  .build();
+          }
+        }
+     }
+     return getFindComptesByTypeMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -228,6 +260,16 @@ public final class CompteServiceGrpc {
       asyncUnimplementedUnaryCall(getSaveCompteMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     *Find by type
+     * </pre>
+     */
+    public void findComptesByType(ma.projet.grpc.stubs.FindComptesByTypeRequest request,
+        io.grpc.stub.StreamObserver<ma.projet.grpc.stubs.FindComptesByTypeResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getFindComptesByTypeMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -258,6 +300,13 @@ public final class CompteServiceGrpc {
                 ma.projet.grpc.stubs.SaveCompteRequest,
                 ma.projet.grpc.stubs.SaveCompteResponse>(
                   this, METHODID_SAVE_COMPTE)))
+          .addMethod(
+            getFindComptesByTypeMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                ma.projet.grpc.stubs.FindComptesByTypeRequest,
+                ma.projet.grpc.stubs.FindComptesByTypeResponse>(
+                  this, METHODID_FIND_COMPTES_BY_TYPE)))
           .build();
     }
   }
@@ -326,6 +375,17 @@ public final class CompteServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSaveCompteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     *Find by type
+     * </pre>
+     */
+    public void findComptesByType(ma.projet.grpc.stubs.FindComptesByTypeRequest request,
+        io.grpc.stub.StreamObserver<ma.projet.grpc.stubs.FindComptesByTypeResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getFindComptesByTypeMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -387,6 +447,16 @@ public final class CompteServiceGrpc {
     public ma.projet.grpc.stubs.SaveCompteResponse saveCompte(ma.projet.grpc.stubs.SaveCompteRequest request) {
       return blockingUnaryCall(
           getChannel(), getSaveCompteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *Find by type
+     * </pre>
+     */
+    public ma.projet.grpc.stubs.FindComptesByTypeResponse findComptesByType(ma.projet.grpc.stubs.FindComptesByTypeRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getFindComptesByTypeMethod(), getCallOptions(), request);
     }
   }
 
@@ -454,12 +524,24 @@ public final class CompteServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSaveCompteMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     *Find by type
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ma.projet.grpc.stubs.FindComptesByTypeResponse> findComptesByType(
+        ma.projet.grpc.stubs.FindComptesByTypeRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getFindComptesByTypeMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ALL_COMPTES = 0;
   private static final int METHODID_COMPTE_BY_ID = 1;
   private static final int METHODID_TOTAL_SOLDE = 2;
   private static final int METHODID_SAVE_COMPTE = 3;
+  private static final int METHODID_FIND_COMPTES_BY_TYPE = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -493,6 +575,10 @@ public final class CompteServiceGrpc {
         case METHODID_SAVE_COMPTE:
           serviceImpl.saveCompte((ma.projet.grpc.stubs.SaveCompteRequest) request,
               (io.grpc.stub.StreamObserver<ma.projet.grpc.stubs.SaveCompteResponse>) responseObserver);
+          break;
+        case METHODID_FIND_COMPTES_BY_TYPE:
+          serviceImpl.findComptesByType((ma.projet.grpc.stubs.FindComptesByTypeRequest) request,
+              (io.grpc.stub.StreamObserver<ma.projet.grpc.stubs.FindComptesByTypeResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -559,6 +645,7 @@ public final class CompteServiceGrpc {
               .addMethod(getCompteByIdMethod())
               .addMethod(getTotalSoldeMethod())
               .addMethod(getSaveCompteMethod())
+              .addMethod(getFindComptesByTypeMethod())
               .build();
         }
       }

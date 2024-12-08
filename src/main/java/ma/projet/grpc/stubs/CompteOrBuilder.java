@@ -20,10 +20,10 @@ public interface CompteOrBuilder extends
       getIdBytes();
 
   /**
-   * <code>float solde = 2;</code>
+   * <code>double solde = 2;</code>
    * @return The solde.
    */
-  float getSolde();
+  double getSolde();
 
   /**
    * <code>string dateCreation = 3;</code>

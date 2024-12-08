@@ -11,7 +11,7 @@ enum TypeCompte {
 // Message représentant un compte
 message Compte {
   string id = 1;
-  float solde = 2;
+  double solde = 2;
   string dateCreation = 3;
   TypeCompte type = 4;
 }
@@ -67,10 +67,14 @@ message SaveCompteRequest {
 message SaveCompteResponse {
   Compte compte = 1;
 }
-message TypeCompteRequest {
-  TypeCompte type = 1;
-}
 
+
+message FindComptesByTypeRequest {
+  TypeCompte type = 1;  // Type de compte (COURANT ou EPARGNE)
+}
+message FindComptesByTypeResponse {
+  repeated Compte comptes = 1;  // Liste des comptes trouvés
+}
 
 
 // Définition du service correspondant aux requêtes et mutations GraphQL
@@ -88,5 +92,5 @@ service CompteService {
   rpc SaveCompte(SaveCompteRequest) returns (SaveCompteResponse);
 
   //Find by type
-  rpc FindByType(TypeCompteRequest) returns (GetAllComptesResponse);
+  rpc FindComptesByType(FindComptesByTypeRequest) returns (FindComptesByTypeResponse);
 }

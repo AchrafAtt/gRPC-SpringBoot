@@ -61,9 +61,9 @@ private static final long serialVersionUID = 0L;
             id_ = s;
             break;
           }
-          case 21: {
+          case 17: {
 
-            solde_ = input.readFloat();
+            solde_ = input.readDouble();
             break;
           }
           case 26: {
@@ -147,12 +147,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int SOLDE_FIELD_NUMBER = 2;
-  private float solde_;
+  private double solde_;
   /**
-   * <code>float solde = 2;</code>
+   * <code>double solde = 2;</code>
    * @return The solde.
    */
-  public float getSolde() {
+  public double getSolde() {
     return solde_;
   }
 
@@ -228,8 +228,8 @@ private static final long serialVersionUID = 0L;
     if (!getIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
-    if (solde_ != 0F) {
-      output.writeFloat(2, solde_);
+    if (solde_ != 0D) {
+      output.writeDouble(2, solde_);
     }
     if (!getDateCreationBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dateCreation_);
@@ -249,9 +249,9 @@ private static final long serialVersionUID = 0L;
     if (!getIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
-    if (solde_ != 0F) {
+    if (solde_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(2, solde_);
+        .computeDoubleSize(2, solde_);
     }
     if (!getDateCreationBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dateCreation_);
@@ -277,8 +277,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getId()
         .equals(other.getId())) return false;
-    if (java.lang.Float.floatToIntBits(getSolde())
-        != java.lang.Float.floatToIntBits(
+    if (java.lang.Double.doubleToLongBits(getSolde())
+        != java.lang.Double.doubleToLongBits(
             other.getSolde())) return false;
     if (!getDateCreation()
         .equals(other.getDateCreation())) return false;
@@ -297,8 +297,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + SOLDE_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getSolde());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getSolde()));
     hash = (37 * hash) + DATECREATION_FIELD_NUMBER;
     hash = (53 * hash) + getDateCreation().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -442,7 +442,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       id_ = "";
 
-      solde_ = 0F;
+      solde_ = 0D;
 
       dateCreation_ = "";
 
@@ -530,7 +530,7 @@ private static final long serialVersionUID = 0L;
         id_ = other.id_;
         onChanged();
       }
-      if (other.getSolde() != 0F) {
+      if (other.getSolde() != 0D) {
         setSolde(other.getSolde());
       }
       if (!other.getDateCreation().isEmpty()) {
@@ -645,32 +645,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private float solde_ ;
+    private double solde_ ;
     /**
-     * <code>float solde = 2;</code>
+     * <code>double solde = 2;</code>
      * @return The solde.
      */
-    public float getSolde() {
+    public double getSolde() {
       return solde_;
     }
     /**
-     * <code>float solde = 2;</code>
+     * <code>double solde = 2;</code>
      * @param value The solde to set.
      * @return This builder for chaining.
      */
-    public Builder setSolde(float value) {
+    public Builder setSolde(double value) {
       
       solde_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>float solde = 2;</code>
+     * <code>double solde = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearSolde() {
       
-      solde_ = 0F;
+      solde_ = 0D;
       onChanged();
       return this;
     }
